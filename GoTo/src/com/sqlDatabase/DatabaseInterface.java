@@ -9,7 +9,7 @@ import main.MainActivity;
 
 public class DatabaseInterface {
 	
-	public static TestAdapter mDbHelper;
+	public TestAdapter mDbHelper;
 	
 	private String destination = "";
 	private String beginning = "";
@@ -30,22 +30,27 @@ public ArrayList<Direction> getBuildingDirections() {
 	
 		String id = "";
 		Direction dir = null;
-		
+		String direct="";
 		//comment
 		
 		ArrayList<Direction> directions = new ArrayList<Direction>();
 		
 		try{
 		
-		mDbHelper.open();
+			mDbHelper.open();
 		
 		if(destination.equalsIgnoreCase("MCB/RAB") && beginning.equalsIgnoreCase("GRUMBACHER ISTC")){
 			
 			id = "1";
 			
-			//dir = new Direction(id,"test", 0); // mDbHelper.getData("Direction", "d00" + i, "directions")
 			
+			//dir = new Direction(id,"test", 0); // 
+			//direct=mDbHelper.getData("Buildings", "b03", "building_name");
+				
+			
+			//dir=new Direction(id,direct, 0);
 			//directions.add(dir);
+			
 			
 			for(int i=12; i<19; i++){
 				
@@ -53,11 +58,13 @@ public ArrayList<Direction> getBuildingDirections() {
 				
 				dir = new Direction(id, "test", 0);
 				
-				//dir = new Direction(id, mDbHelper.getData("Direction", "d00" + i, "directions"), 0);
+				direct=mDbHelper.getData("Direction", "d003", "directions");
 				
-				directions.add(dir);
+				dir = new Direction(id, direct, 0);
 				
-			}
+				directions.add(dir); 
+				
+			} 
 		
 		}
 		
@@ -87,12 +94,12 @@ public ArrayList<Direction> getBuildingDirections() {
 		}
 		finally{
 		
-			mDbHelper.close();	
+			
 		
 		}
 				
 				
-		
+		mDbHelper.close();
 		return directions;
 		
 	}

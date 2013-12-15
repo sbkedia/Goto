@@ -199,7 +199,10 @@ public class GetDirections extends Activity {
 	        //ImageSpan is = new ImageSpan(this, R.drawable.error);
 	        
 	        directionsTextView1.setText("  " + directionsArray.get(0).getDirectionTxt());
-	        
+	        /*mDbHelper.open();
+	        directionsTextView1.setText(mDbHelper.getData("Buildings", "b03", "building_info"));
+	        mDbHelper.close();
+	        */
 	        directionsTextView1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.error, 0, 0, 0);
 	        
 	    	
