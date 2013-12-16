@@ -59,7 +59,7 @@ public class ChooseDestination extends Activity {
     	final BootstrapButton jrrsccButton = (BootstrapButton) findViewById(R.id.jrrsccDestinationButton);
     	final BootstrapButton istButton = (BootstrapButton) findViewById(R.id.istDestinationButton);
     	final BootstrapButton eliasButton = (BootstrapButton) findViewById(R.id.eliasDestinationButton);
-    	final BootstrapButton bradleyButton = (BootstrapButton) findViewById(R.id.bradleyDestinationButton);
+    	
 
     	final BootstrapButton goToButton = (BootstrapButton) findViewById(R.id.goToButton);	
     	final BootstrapButton currentLocationButton = (BootstrapButton) findViewById(R.id.currentLocatonButton);
@@ -96,11 +96,7 @@ public class ChooseDestination extends Activity {
 			
 		}
 		
-		if(scanResult.equalsIgnoreCase("BRADLEY BUILDING")){
-			
-			bradleyButton.setBootstrapButtonEnabled(false);		
-			
-		}
+		
 		
     	
 		currentLocationButton.setText(scanResult);
@@ -135,7 +131,7 @@ public class ChooseDestination extends Activity {
             	jrrsccButton.setBootstrapButtonEnabled(true);
             	istButton.setBootstrapButtonEnabled(true);
             	eliasButton.setBootstrapButtonEnabled(true);
-            	bradleyButton.setBootstrapButtonEnabled(true);
+            	
             	
             	goToButton.setBootstrapButtonEnabled(false);
             	
@@ -171,7 +167,7 @@ public class ChooseDestination extends Activity {
         		
         		if(scanResult.equalsIgnoreCase("BRADLEY BUILDING")){
         			
-        			bradleyButton.setBootstrapButtonEnabled(false);		
+        				
         			
         		}
             }
@@ -199,7 +195,7 @@ public class ChooseDestination extends Activity {
             	jrrsccButton.setBootstrapButtonEnabled(false);
             	istButton.setBootstrapButtonEnabled(false);
             	eliasButton.setBootstrapButtonEnabled(false);
-            	bradleyButton.setBootstrapButtonEnabled(false);
+            	
             	
             	goToButton.setBootstrapButtonEnabled(true);
             	
@@ -216,11 +212,11 @@ public class ChooseDestination extends Activity {
             	jrrsccButton.setBootstrapButtonEnabled(false);
             	istButton.setBootstrapButtonEnabled(false);
             	eliasButton.setBootstrapButtonEnabled(false);
-            	bradleyButton.setBootstrapButtonEnabled(false);
+            	
             	
             	goToButton.setBootstrapButtonEnabled(true);
             	
-            	buildingSelected = "PULLO CENTER (PAC)"; 
+            	buildingSelected = "Pullo Building (PAC)"; 
             }
         });
 		
@@ -232,7 +228,7 @@ public class ChooseDestination extends Activity {
             	pulloButton.setBootstrapButtonEnabled(false);
             	istButton.setBootstrapButtonEnabled(false);
             	eliasButton.setBootstrapButtonEnabled(false);
-            	bradleyButton.setBootstrapButtonEnabled(false);
+            	
             	
             	goToButton.setBootstrapButtonEnabled(true);
             	
@@ -248,7 +244,7 @@ public class ChooseDestination extends Activity {
             	pulloButton.setBootstrapButtonEnabled(false);
             	jrrsccButton.setBootstrapButtonEnabled(false);
             	eliasButton.setBootstrapButtonEnabled(false);
-            	bradleyButton.setBootstrapButtonEnabled(false);
+            	
             	
             	goToButton.setBootstrapButtonEnabled(true);
             	
@@ -264,29 +260,15 @@ public class ChooseDestination extends Activity {
             	pulloButton.setBootstrapButtonEnabled(false);
             	jrrsccButton.setBootstrapButtonEnabled(false);
             	istButton.setBootstrapButtonEnabled(false);
-            	bradleyButton.setBootstrapButtonEnabled(false);
+            	
             	
             	goToButton.setBootstrapButtonEnabled(true);
             	
-            	buildingSelected = "SCIENCE BUILDING (ELIAS)"; 
+            	buildingSelected = "Elias (Science Building)"; 
             }
         });
 		
-		bradleyButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            	
-            	mcbButton.setBootstrapButtonEnabled(false);
-            	pulloButton.setBootstrapButtonEnabled(false);
-            	jrrsccButton.setBootstrapButtonEnabled(false);
-            	istButton.setBootstrapButtonEnabled(false);
-            	eliasButton.setBootstrapButtonEnabled(false);
-            	
-            	goToButton.setBootstrapButtonEnabled(true);
-            	
-            	buildingSelected = "BRADLEY BUILDING"; 
-            }
-        });	
+		
 				
 	}
 
