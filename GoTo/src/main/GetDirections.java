@@ -19,12 +19,17 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 //import android.text.SpannableString;
 //import android.text.style.ImageSpan;
 //import android.graphics.LightingColorFilter;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 //import android.widget.Button;
 import android.widget.TextView;
 
@@ -182,7 +187,9 @@ public class GetDirections extends Activity {
 	    	
 	    }
 	    
-	    private void setText(){
+private void setText(){
+	    	
+	    	//ArrayList<String> directions = new ArrayList<String>();
 	    	
 	    	DatabaseInterface dbInterface = new DatabaseInterface(ChooseDestination.getDestination(), MainActivity.getScanResult());
 	    	
@@ -192,18 +199,107 @@ public class GetDirections extends Activity {
 	    	
 	    	TextView toFrom = (TextView) findViewById(R.id.toFromTextView);
 	        
-	        TextView directionsTextView1 = (TextView) findViewById(R.id.textView2);
+	        TableLayout directionsTable = (TableLayout) findViewById(R.id.directionsTable);
 	        
-	        toFrom.setText("From: " + ChooseDestination.getDestination() + " \nTo: " + ChooseDestination.getBeginning());
-
-	        //ImageSpan is = new ImageSpan(this, R.drawable.error);
+	        toFrom.setText("From: " + ChooseDestination.getBeginning() + " \nTo: " + ChooseDestination.getDestination());
 	        
-	        directionsTextView1.setText("  " + directionsArray.get(0).getDirectionTxt());
+	        for(int x=0; x<directionsArray.size(); x++){
+	        	
+	        	String directions = "";	        	
+	        	String image = "";
+	        	
+	        	directions = "  " + directionsArray.get(x).getDirectionTxt();
+	        	
+	        	image = directionsArray.get(x).getDirectionImage();
+	        	
+	        	TableRow row= new TableRow(this);
+	        	//TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+	        	//row.setLayoutParams(lp);
+	        	
+	        	TextView tv = new TextView(this);
+	        	
+	        	//tv.setWidth(LayoutParams.WRAP_CONTENT);
+	        	
+	        	//LinearLayout.LayoutParams childParams = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT,
+	                    //LayoutParams.WRAP_CONTENT);
+	        	
+	        	//tv.setLayoutParams(childParams);
+	        	//row.setLayoutParams(childParams);
+	        	tv.setTextColor(Color.BLACK);
+	        	
+	        	tv.setText(directions);
+	        	
+	        	if(image.equalsIgnoreCase("straight.jpg")){	        		
+	        	
+	        		tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.straight, 0, 0, 0);
+	        	
+	        	}
+	        	
+	        	else if(image.equalsIgnoreCase("slight_left.jpg")){	        		
+		        	
+	        		tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.slight_left, 0, 0, 0);
+	        	
+	        	}
+	        	
+	        	else if(image.equalsIgnoreCase("slight_right.jpg")){	        		
+		        	
+	        		tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.slight_right, 0, 0, 0);
+	        	
+	        	}
+	        	
+	        	else if(image.equalsIgnoreCase("right_arrow.jpg")){	        		
+		        	
+	        		tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.right_arrow, 0, 0, 0);
+	        	
+	        	}
+	        	
+	        	else if(image.equalsIgnoreCase("left_arrow.jpg")){	        		
+		        	
+	        		tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.left_arrow, 0, 0, 0);
+	        	
+	        	}else{
+	        		
+	        		
+	        		tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.finish, 0, 0, 0);
+	        		
+	        	}
+	        	
+	            row.addView(tv);
+	            
+	            directionsTable.addView(row);
+	            
+	            //View rule = (View) findViewById(R.id.topRule);
+	            
+	           //LayoutParams params = (LayoutParams) rule.getLayoutParams();
+	            
+	            //View view = new View(this);
+	            
+	           // view.setLayoutParams(params);
+	            
+	            //view.setBackgroundColor(0x00000000);
+	            
+	           // directionsTable.addView(view);
+	            
+	            //TableRow pad= new TableRow(this);
+	            
+	            //pad.setLayoutParams(params);
+	            
+	            //TextView text = new TextView(this);
+	            
+	            //text.setBackgroundColor(Color.BLACK);
+	            
+	            //text.setText(" ");
+	            
+	            //pad.addView(text);
+	            
+	            //directionsTable.addView(pad);
+	        }
+	        
 	        /*mDbHelper.open();
 	        directionsTextView1.setText(mDbHelper.getData("Buildings", "b03", "building_info"));
 	        mDbHelper.close();
 	        */
-	        directionsTextView1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.error, 0, 0, 0);
+	        //directionsTextView1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.error, 0, 0, 0);
 	        
 	    	
 	    }
